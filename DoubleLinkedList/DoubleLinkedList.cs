@@ -23,7 +23,7 @@
             }
         }
 
-        public void toEnd() {
+        public void toLast() {
             if (!isEmpty()) {
                 current = end;
             }
@@ -49,11 +49,11 @@
             };
             if (isEmpty()) {
                 start = nextNode;
-                end = nextNode;
             }
             else {
                 end.next = nextNode;
             }
+            end = nextNode;
         }
 
         public void insert(object pObject) {
@@ -63,7 +63,7 @@
                 return;
             }
             if (hasAccess()) {
-                Node prevNode = new Node() {
+                Node prevNode = new Node {
                     prev = current.prev,
                     next = current,
                     obj = pObject
@@ -95,6 +95,10 @@
             if (current != start) {
                 current.prev.next = current.next;
             }
+            else {
+                start = current.next;
+            }
+            
             if (current != end) {
                 current.next.prev = current.prev;
             }

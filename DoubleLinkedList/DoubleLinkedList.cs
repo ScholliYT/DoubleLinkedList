@@ -1,7 +1,4 @@
-﻿using System;
-using System.Runtime.InteropServices;
-
-namespace DoubleLinkedList {
+﻿namespace DoubleLinkedList {
     public class DoubleLinkedList {
         public Node start { get; private set; }
         public Node current { get; private set; }

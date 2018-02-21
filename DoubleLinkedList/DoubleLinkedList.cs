@@ -14,19 +14,16 @@
 
         public void next() {
             if (!hasAccess()) return;
-            current = current == end ? null : current.next;
+            current = current.next;
+            // current = current == end ? null : current.next;
         }
 
         public void toFirst() {
-            if (!isEmpty()) {
-                current = start;
-            }
+            current = start;
         }
 
         public void toLast() {
-            if (!isEmpty()) {
-                current = end;
-            }
+            current = end;
         }
 
         public object getObject() {
@@ -34,8 +31,7 @@
         }
 
         public void setObject(object pObject) {
-            if (!hasAccess()) return;
-            if (pObject != null) {
+            if (hasAccess() && pObject != null) {
                 current.obj = pObject;
             }
         }
@@ -53,6 +49,7 @@
             else {
                 end.next = nextNode;
             }
+
             end = nextNode;
         }
 
@@ -60,9 +57,8 @@
             if (pObject == null) return;
             if (isEmpty()) {
                 append(pObject);
-                return;
             }
-            if (hasAccess()) {
+            else if (hasAccess()) {
                 Node prevNode = new Node {
                     prev = current.prev,
                     next = current,
@@ -86,6 +82,7 @@
                 end.next = pList.start;
                 pList.start.prev = end;
             }
+
             end = pList.end;
             pList.clear();
         }
@@ -98,10 +95,11 @@
             else {
                 start = current.next;
             }
-            
+
             if (current != end) {
                 current.next.prev = current.prev;
             }
+
             current = current.next;
         }
 
@@ -120,6 +118,7 @@
             if (isEmpty()) {
                 start = _node;
             }
+
             end = _node;
         }
     }

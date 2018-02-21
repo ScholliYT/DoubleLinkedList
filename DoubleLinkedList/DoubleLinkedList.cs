@@ -1,8 +1,8 @@
 ﻿namespace DoubleLinkedList {
     public class DoubleLinkedList {
-        public Node start { get; private set; }
-        public Node current { get; private set; }
-        public Node end { get; private set; }
+        private Node start { get; set; }
+        private Node current { get; set; }
+        private Node end { get; set; }
 
         public bool isEmpty() {
             return start == null;
